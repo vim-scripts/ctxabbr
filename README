@@ -1,0 +1,27 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2514
+
+*ctxabbr* is a Vim plugin to provide a convenient way to define a variant of
+normal |abbreviations|, called as "context-sensitive abbreviations".
+Normal abbreviations are short words which will be replaced with the words
+they stand for whenever you enter the short words.
+But sometimes, it is useful to replace such abbreviations
+with some text according to the context - text around the cursor.
+
+For example,
+
+	call ctxabbr#define('sc', 'System.Collections', '<using')
+
+With the above setting, whenever you enter "sc", it is replaced with
+"System.Collections" if it is entered after a word "using", or
+"sc" otherwise.  It is illustrated as follows:
+
+	using sc       ==>    using System.Collections
+	// sc sc sc    ==>    // sc sc sc
+
+
+
+Requirements:
+- Vim 7.2 or later
+
+Latest version:
+http://github.com/kana/vim-ctxabbr
