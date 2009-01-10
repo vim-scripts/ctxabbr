@@ -1,6 +1,6 @@
 *ctxabbr.txt*	Context-sensitive abbreviations
 
-Version 0.0.0
+Version 0.0.1
 Script ID: 2514
 Copyright (C) 2008 kana <http://whileimautomaton.net/>
 License: MIT license  {{{
@@ -77,9 +77,10 @@ ctxabbr#clear({lhs})				*ctxabbr#clear()*
 			Delete all context-sensitive abbreviations for {lhs}
 			defined by |ctxabbr#define()|.
 
-ctxabbr#define({lhs}, {rhs}, [{condition}])	*ctxabbr#define()*
+ctxabbr#define({lhs}, {rhs}, {condition})	*ctxabbr#define()*
 			Like ":inoreabbrev {lhs} {rhs}",
 			but {lhs} is replaced if {condition} is met.
+			If all conditions are not met, {lhs} is left as-is.
 
 			If this function is called multiple times with the
 			same {lhs}, later called definition is prior to
@@ -112,6 +113,11 @@ ctxabbr#define({lhs}, {rhs}, [{condition}])	*ctxabbr#define()*
 					/{regexp} searchs forward.
 					?{regexp} searchs backward.
 
+				!
+					Fallback condition.
+					If all other conditions are not met,
+					this condition is used.
+
 ctxabbr#dump([{lhs}, ...])			*ctxabbr#dump()*
 			Show what abbreviations are defined for {lhs}.
 
@@ -136,6 +142,10 @@ BUGS						*ctxabbr-bugs*
 
 ==============================================================================
 CHANGELOG					*ctxabbr-changelog*
+
+0.0.1	2009-01-10T12:57:03+09:00
+	- Remove unintentionally remained :echomsg for debugging.
+	- |ctxabbr#define()|: Add "!" condition.
 
 0.0.0	2009-01-09T16:02:13+09:00
 	- Initial version.  Inspired from:
